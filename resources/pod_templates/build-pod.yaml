@@ -1,0 +1,24 @@
+# ==============================================================================
+# Jenkins slaves/workers/nodes/agents pod definitions
+# ==============================================================================
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  # ----------------------------------------------------------------------------
+  # JNLP Node
+  # ----------------------------------------------------------------------------
+  - name: 'jnlp'
+    securityContext:
+      runAsUser: 1000
+    image: "maven:3.6.2-jdk-8-slim"
+    tty: true
+    - sh
+    args: /var/jenkins_config/jenkins-agent
+    volumeMounts:
+    - mountPath: /var/jenkins_config
+      name: jenkins-agent
+  volumes:
+  - name: jenkins-agent
+    configMap:
+      path: /var/jenkins_config
