@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: 'jnlp'
+    image: "maven:3.6.2-jdk-8-slim"
+    tty: true
+    command:
+    - sh
+    args: 
+    - /var/jenkins_config/jenkins-agent
+    volumeMounts:
+    - mountPath: /var/jenkins_config
+      name: jenkins-agent
+  volumes:
+  - configMap:
+    name: jenkins-agent
+    path: /var/jenkins_config
