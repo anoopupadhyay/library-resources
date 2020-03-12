@@ -13,6 +13,7 @@ spec:
     - mountPath: /var/jenkins_config
       name: jenkins-agent
   volumes:
-  - configMap:
-    name: jenkins-agent
-    path: /var/jenkins_config
+  - name: jenkins-agent
+    configMap:
+      name: jenkins-agent
+      path: /var/jenkins_config
