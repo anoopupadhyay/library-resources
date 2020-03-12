@@ -20,8 +20,19 @@ spec:
     volumeMounts:
     - mountPath: /var/jenkins_config
       name: jenkins-agent
+  - name: 'docker'
+    image: "docker:19-dind"
+    tty: true
+    command:
+    - cat
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-socket
   volumes:
   - name: jenkins-agent
     configMap:
       name: jenkins-agent
       path: /var/jenkins_config
+  - name: docker-socket
+    hostPath:
+      path: /var/run/docker.sock
