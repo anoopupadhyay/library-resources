@@ -7,3 +7,10 @@ spec:
     tty: true
     command:
     - cat
+    volumeMounts:
+    - name: maven-repo
+      mountPath: /root/.m2/repository
+  volumes:
+  - name: maven-repo
+    persistentVolumeClaim:
+      claimName: maven-repo
