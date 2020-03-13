@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: 'sonar'
+    image: "sonarsource/sonar-scanner-cli"
+    tty: true
+    command:
+    - cat
