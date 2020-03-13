@@ -3,8 +3,6 @@ kind: Pod
 spec:
   containers:
   - name: 'jnlp'
-    securityContext:
-      runAsUser: 1000
     image: "maven:3.6.2-jdk-8-slim"
     tty: true
     command:
